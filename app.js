@@ -9,3 +9,38 @@ Notes: Jangan lupa memberikan keterangan dari masing2 service dan databasenya.
 
 Contoh DB = MongoDB/PostgreSql/MySql,Lang Program = nodejs/php/java/python
 */
+
+const express = require("express");
+const cors = require("cors");
+
+require("dotenv").config();
+const app = express();
+
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
+app.use(cors({ origin: "*" }));
+
+app.use("/api");
+
+app.all("/", (req, res) => {
+  res.status(200).json({
+    code: 200,
+    statusText: "OK",
+    success: true,
+    mesage: "This is the simple-app-ptbvt API",
+  });
+});
+
+app.all("*", (req, res) => {
+  res.status(404).json({
+    code: 404,
+    statusText: "Not Found",
+    success: false,
+    message: "Wrong route. Please change to the right one",
+  });
+});
+
+app.listen(process.env.PORT, (req, res) => {
+  console.log(`Now listening on port ${process.env.PORT}`);
+});
