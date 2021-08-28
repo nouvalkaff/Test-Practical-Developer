@@ -1,0 +1,16 @@
+{
+  "development": {
+    "username": "vlterjlmhqhreo",
+    "password": "10dd2c5d8e44cf4dd32a1c2b85f3446e23e23469941662d525ddb84de8335cca",
+    "database": "desa5fc9fmp1ot",
+    "host": "ec2-54-147-93-73.compute-1.amazonaws.com",
+    "port": 5432,
+    "dialect": "postgres",
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    }
+  }
+}
