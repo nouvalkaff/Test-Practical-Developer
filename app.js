@@ -21,7 +21,10 @@ app.use(express.json());
 
 app.use(cors({ origin: "*" }));
 
-app.use("/api");
+const userRoutes = require("./src/routes/userRoutes"),
+  catalogRoutes = require("./src/routes/catalogRoutes");
+
+app.use("/api", userRoutes, catalogRoutes);
 
 app.all("/", (req, res) => {
   res.status(200).json({
@@ -41,6 +44,6 @@ app.all("*", (req, res) => {
   });
 });
 
-app.listen(process.env.PORT, (req, res) => {
+app.listen(process.env.PORT, () => {
   console.log(`Now listening on port ${process.env.PORT}`);
 });
